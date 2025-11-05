@@ -1,144 +1,263 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>esim流量卡商城</title>
-    <meta name="keywords" content="esim流量卡, esim手机流量卡, esim全国流量卡, esim本地流量卡, esim流量卡usdt购买">
-    <meta name="description" content="esim流量卡商城提供各种类型的手机流量卡，支持usdt支付购买，包括全国流量卡和本地流量卡，适合不同地区和使用时长，价格优惠，欢迎购买。">
- 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f5f5f5;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BotLink — Link Your Crypto Life</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0a0f1a; color: #fff; overflow-x: hidden; }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
+    /* === Header === */
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 8%;
+      background: rgba(10, 15, 26, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+    }
+    header h1 {
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      color: #00aaff;
+      font-weight: 700;
+    }
+    header nav a {
+      color: #ccc;
+      margin-left: 24px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+    header nav a:hover { color: #00aaff; }
 
-        .header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
+    /* === Hero === */
+    .hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 0 10%;
+      background: radial-gradient(ellipse at bottom, #0a0f1a 0%, #000 100%);
+      overflow: hidden;
+    }
 
-        .products {
-            display: flex;
-            flex-direction: column;
-        }
+    /* 动态网格背景 */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 80px 80px;
+      animation: moveGrid 20s linear infinite;
+      z-index: 0;
+    }
+    @keyframes moveGrid {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 80px 80px, 80px 80px; }
+    }
 
-        .product {
-            display: flex;
-            flex-direction: column;
-            padding: 1rem;
-            border-bottom: 1px solid #ddd;
-        }
+    /* 英文流光层 */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(0,170,255,0.15), transparent);
+      animation: lightFlow 6s linear infinite;
+      z-index: 1;
+    }
+    @keyframes lightFlow {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
 
-        .product:last-child {
-            border-bottom: none;
-        }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .hero h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 20px; }
+    .hero p { color: #b7c3d2; line-height: 1.6; font-size: 1.05rem; margin-bottom: 30px; }
+    .hero .cta {
+      display: inline-block;
+      background: #00aaff;
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(0,170,255,0.3);
+    }
+    .hero .cta:hover {
+      background: #0091e6;
+      box-shadow: 0 0 25px rgba(0,170,255,0.5);
+    }
 
-        .product-details {
-            display: flex;
-            flex-direction: column;
-        }
+    /* === Section === */
+    section {
+      padding: 100px 10%;
+      text-align: center;
+    }
+    section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #00aaff;
+    }
+    section p { max-width: 800px; margin: 0 auto 50px; color: #b7c3d2; }
 
-        .product-details span {
-            margin: 0.5rem 0;
-        }
+    /* === Features === */
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .feature {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 30px;
+      width: 300px;
+      transition: 0.3s;
+    }
+    .feature:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 15px rgba(0,170,255,0.2);
+    }
+    .feature h4 { color: #00aaff; margin-bottom: 10px; font-size: 1.2rem; }
 
-        .buy-button {
-            margin-top: 1rem;
-            text-align: center;
-        }
+    /* === Roadmap === */
+    .roadmap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+    }
+    .step {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 20px 30px;
+      width: 80%;
+      max-width: 700px;
+      text-align: left;
+    }
+    .step h5 { color: #00aaff; margin-bottom: 8px; }
 
-        .buy-button a {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-        }
+    /* === Community === */
+    .community a {
+      display: inline-block;
+      margin: 10px;
+      background: #00aaff;
+      padding: 12px 28px;
+      border-radius: 30px;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .community a:hover { background: #0091e6; }
 
-        @media (min-width: 768px) {
-            .product {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
+    /* === Footer === */
+    footer {
+      background: rgba(255,255,255,0.05);
+      text-align: center;
+      padding: 30px;
+      color: #888;
+      font-size: 0.9rem;
+    }
 
-            .product-details {
-                flex-direction: row;
-                flex: 1;
-            }
-
-            .product-details span {
-                flex: 1;
-                margin: 0;
-            }
-
-            .buy-button {
-                margin-top: 0;
-                margin-left: 1rem;
-            }
-        }
-    </style>
+    @media(max-width:700px){
+      header { padding: 12px 6%; }
+      header nav a { margin-left: 12px; }
+      .hero h2 { font-size: 1.6rem; }
+      .hero p { font-size: 0.95rem; }
+      section { padding: 60px 6%; }
+      .features { flex-direction: column; align-items: center; }
+      .feature { width: 90%; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>esim流量卡商城</h1>
-        </div>
-        <div class="products">
-            <div class="product">
-                <div class="product-details">
-                    <span>地区: 中港澳</span>
-                    <span>流量: 10G</span>
-                    <span>时长: 30天</span>
-                    <span>价格: 30usdt</span>
-                </div>
-                <div class="buy-button">
-                    <a href="https://t.me/Angela_Evelyn">usdt购买</a>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-details">
-                    <span>地区: 中港澳</span>
-                    <span>流量: 45G</span>
-                    <span>时长: 365天</span>
-                    <span>价格: 50usdt</span>
-                </div>
-                <div class="buy-button">
-                    <a href="https://t.me/Angela_Evelyn">usdt购买</a>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-details">
-                    <span>地区: 中港澳</span>
-                    <span>流量: 30G</span>
-                    <span>时长: 90天</span>
-                    <span>价格: 40usdt</span>
-                </div>
-                <div class="buy-button">
-                    <a href="https://t.me/Angela_Evelyn">usdt购买</a>
-                </div>
-            </div>
-            <!-- 可以添加更多商品 -->
-        </div>
+  <header>
+    <h1>BotLink</h1>
+    <nav>
+      <a href="#features">功能</a>
+      <a href="#token">Token</a>
+      <a href="#roadmap">路线图</a>
+      <a href="#community">社区</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>连接加密世界的多功能<br>Telegram Bot</h2>
+      <p>BotLink 让区块链的复杂功能变得简单。无论你是交易者、开发者还是普通用户，都能轻松管理资产、兑换代币并参与生态。</p>
+      <a href="https://t.me/BotLinkNetwork_bot" class="cta">立即体验 BotLink</a>
     </div>
+  </section>
+
+  <section id="features">
+    <h3>核心功能</h3>
+    <div class="features">
+      <div class="feature">
+        <h4>实时查询 USDT 法币 汇率</h4>
+        <p>获取最新的法币场外价格数据，支持多交易所比价。</p>
+      </div>
+      <div class="feature">
+        <h4>一键兑换 TRX</h4>
+        <p>快速完成 TRX 与 USDT 的兑换，安全高效。</p>
+      </div>
+      <div class="feature">
+        <h4>购买 TRX 能量</h4>
+        <p>节省链上手续费，优化你的交易体验。</p>
+      </div>
+      <div class="feature">
+        <h4>开通 Telegram Premium</h4>
+        <p>直接在 Bot 中完成购买，支持多种支付方式。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="token">
+    <h3>$BotLink Token</h3>
+    <p>$BotLink 是整个生态的核心通证，用于解锁高级功能、享受空投与激励，并将在未来参与治理与收益分配。</p>
+  </section>
+
+  <section id="roadmap">
+    <h3>项目路线图</h3>
+    <div class="roadmap">
+      <div class="step">
+        <h5>阶段 1</h5>
+        <p>发布核心功能（汇率、兑换、能量）并上线 Telegram。</p>
+      </div>
+      <div class="step">
+        <h5>阶段 2</h5>
+        <p>推出 $BotLink Token，开放生态激励与推广体系。</p>
+      </div>
+      <div class="step">
+        <h5>阶段 3</h5>
+        <p>上线 Web 自动化工具，打造一体化加密生态入口。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="community" class="community">
+    <h3>加入社区</h3>
+    <p>与 500000+ 位活跃用户一起，探索加密世界的无限可能。</p>
+    <a href="https://t.me/BotLinkNetwork">Telegram 频道</a>
+    <a href="https://t.me/BotLink_Pro">Telegram 群组</a>
+  </section>
+
+  <footer>
+    <p>© 2025 BotLink | <a href="https://botlink.network/book.pdf" style="color:#00aaff;text-decoration:none;">查看白皮书</a></p>
+  </footer>
 </body>
 </html>
