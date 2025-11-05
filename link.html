@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BotLink — Link Your Crypto Life</title>
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --card-bg: #ffffff;
+      --border: #e6e9ee;
+      --accent: #0b6cff;
+    }
+    body.dark{
+      --bg: #0b0f13;
+      --text: #e6eef8;
+      --muted: #9aa6b2;
+      --card-bg: #0f1720;
+      --border: #1f2a33;
+      --accent: #4aa3ff;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      padding:20px;
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      transition: background .18s, color .18s;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 20px;
+      border-bottom:1px solid var(--border);
+      position:sticky;
+      top:0;
+      background:var(--card-bg);
+      z-index:50;
+    }
+    header h1{font-size:20px;margin:0;font-weight:600}
+    .controls{display:flex;align-items:center;gap:10px}
+
+    .theme-btn{
+      cursor:pointer;
+      border:1px solid var(--border);
+      background:transparent;
+      padding:6px 8px;
+      border-radius:8px;
+      font-size:16px;
+      color:var(--text);
+    }
+
+    main{max-width:1200px;margin:22px auto;padding:0 12px}
+
+    section{margin-bottom:28px}
+    section h2{
+      margin:0 0 14px 0;
+      font-size:18px;
+      padding-left:10px;
+      border-left:4px solid var(--accent);
+      color:var(--accent);
+      font-weight:600;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap:14px;
+    }
+
+    .item{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      padding:12px;
+      border-radius:10px;
+      box-shadow:0 2px 6px rgba(2,6,23,0.04);
+      transition: transform .14s ease, box-shadow .14s ease;
+    }
+    .item:hover{
+      transform: translateY(-4px);
+      box-shadow:0 8px 20px rgba(2,6,23,0.08);
+    }
+
+    .logo{
+      width:40px;height:40px;border-radius:8px;background:#f5f7fb;flex-shrink:0;object-fit:contain;
+      display:block;
+    }
+
+    .meta{
+      min-width:0; /* allow text truncation */
+      overflow:hidden;
+    }
+    .meta a{
+      display:inline-block;
+      font-weight:600;
+      color:var(--text);
+      text-decoration:none;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:100%;
+    }
+    .meta p{
+      margin:6px 0 0 0;
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    footer{max-width:1200px;margin:30px auto;color:var(--muted);font-size:13px;text-align:center}
+    @media (max-width:600px){
+      .logo{width:36px;height:36px}
+      .meta p{font-size:13px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BotLink 连接你的加密生活 </h1>
+    <div class="controls">
+      <button class="theme-btn" id="themeBtn" title="切换深色/浅色">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- 常用工具 -->
+    <section>
+      <h2>常用工具</h2>
+      <div class="grid">
+        <div class="item"><img class="logo" src="https://mytokencap.com/favicon.ico" alt="MyToken"><div class="meta"><a href="https://mytokencap.com" target="_blank">MyToken</a><p>一站式数字资产行情平台</p></div></div>
+        <div class="item"><img class="logo" src="https://www.rootdata.com/favicon.ico" alt="RootData"><div class="meta"><a href="https://www.rootdata.com" target="_blank">RootData</a><p>区块链项目结构化数据库</p></div></div>
+        <div class="item"><img class="logo" src="https://www.tokenpocket.pro/favicon.ico" alt="TokenPocket"><div class="meta"><a href="https://www.tokenpocket.pro" target="_blank">TokenPocket</a><p>多链去中心化钱包</p></div></div>
+        <div class="item"><img class="logo" src="https://etherscan.io/favicon.ico" alt="Etherscan"><div class="meta"><a href="https://etherscan.io" target="_blank">Etherscan</a><p>以太坊区块浏览器</p></div></div>
+        <div class="item"><img class="logo" src="https://dune.com/favicon.ico" alt="Dune"><div class="meta"><a href="https://dune.com" target="_blank">Dune Analytics</a><p>链上数据可视化与仪表盘</p></div></div>
+        <div class="item"><img class="logo" src="https://messari.io/favicon.ico" alt="Messari"><div class="meta"><a href="https://messari.io" target="_blank">Messari</a><p>加密研究与数据平台</p></div></div>
+        <div class="item"><img class="logo" src="https://coinmarketcap.com/favicon.ico" alt="CoinMarketCap"><div class="meta"><a href="https://coinmarketcap.com" target="_blank">CoinMarketCap</a><p>全球数字货币市值排行</p></div></div>
+        <div class="item"><img class="logo" src="https://www.coingecko.com/favicon.ico" alt="CoinGecko"><div class="meta"><a href="https://www.coingecko.com" target="_blank">CoinGecko</a><p>加密货币行情与数据</p></div></div>
+        <div class="item"><img class="logo" src="https://coinmetrics.io/favicon.ico" alt="Coin Metrics"><div class="meta"><a href="https://coinmetrics.io" target="_blank">Coin Metrics</a><p>链上市场数据提供商</p></div></div>
+        <div class="item"><img class="logo" src="https://defillama.com/favicon.ico" alt="DefiLlama"><div class="meta"><a href="https://defillama.com" target="_blank">DefiLlama</a><p>DeFi 数据聚合与 TVL 仪表盘</p></div></div>
+        <div class="item"><img class="logo" src="https://snapshot.org/favicon.ico" alt="Snapshot"><div class="meta"><a href="https://snapshot.org" target="_blank">Snapshot</a><p>DAO 投票与治理界面</p></div></div>
+        <div class="item"><img class="logo" src="https://chainlist.org/favicon.ico" alt="Chainlist"><div class="meta"><a href="https://chainlist.org" target="_blank">Chainlist</a><p>EVM 链网络与 RPC 列表</p></div></div>
+        <div class="item"><img class="logo" src="https://www.blockin.ai/favicon.ico" alt="Blockin.ai"><div class="meta"><a href="https://www.blockin.ai" target="_blank">Blockin.ai</a><p>链上数据与工具聚合</p></div></div>
+        <div class="item"><img class="logo" src="https://skynet.certik.com/favicon.ico" alt="Skynet Certik"><div class="meta"><a href="https://skynet.certik.com" target="_blank">Skynet (CertiK)</a><p>安全审计与监控</p></div></div>
+        <div class="item"><img class="logo" src="https://swap.transit.finance/favicon.ico" alt="Transit Swap"><div class="meta"><a href="https://swap.transit.finance" target="_blank">Transit Swap</a><p>跨链 / 交易聚合工具</p></div></div>
+        <div class="item"><img class="logo" src="https://research.web3caff.com/favicon.ico" alt="Web3Caff"><div class="meta"><a href="https://research.web3caff.com" target="_blank">Web3Caff Research</a><p>研究与报告汇总</p></div></div>
+      </div>
+    </section>
+
+    <!-- 综合性工具 -->
+    <section>
+      <h2>综合性工具</h2>
+      <div class="grid">
+        <div class="item"><img class="logo" src="https://www.oklink.com/favicon.ico" alt="OKLink"><div class="meta"><a href="https://www.oklink.com" target="_blank">OKLink</a><p>区块链数据与浏览服务</p></div></div>
+        <div class="item"><img class="logo" src="https://0xscope.com/favicon.ico" alt="0xScope"><div class="meta"><a href="https://0xscope.com" target="_blank">0xScope</a><p>Web3 知识图谱与分析</p></div></div>
+        <div class="item"><img class="logo" src="https://glassnode.com/favicon.ico" alt="Glassnode"><div class="meta"><a href="https://glassnode.com" target="_blank">Glassnode</a><p>链上数据分析与指标</p></div></div>
+        <div class="item"><img class="logo" src="https://cryptoquant.com/favicon.ico" alt="CryptoQuant"><div class="meta"><a href="https://cryptoquant.com" target="_blank">CryptoQuant</a><p>市场链上监控平台</p></div></div>
+        <div class="item"><img class="logo" src="https://flipsidecrypto.xyz/favicon.ico" alt="Flipside"><div class="meta"><a href="https://flipsidecrypto.xyz" target="_blank">Flipside Crypto</a><p>链上数据分析与查询</p></div></div>
+        <div class="item"><img class="logo" src="https://dappradar.com/favicon.ico" alt="DappRadar"><div class="meta"><a href="https://dappradar.com" target="_blank">DappRadar</a><p>DApp 追踪与统计平台</p></div></div>
+        <div class="item"><img class="logo" src="https://www.nansen.ai/favicon.ico" alt="Nansen"><div class="meta"><a href="https://www.nansen.ai" target="_blank">Nansen</a><p>链上钱包行为分析</p></div></div>
+        <div class="item"><img class="logo" src="https://solana.fm/favicon.ico" alt="SolanaFM"><div class="meta"><a href="https://solana.fm" target="_blank">SolanaFM</a><p>Solana 区块数据浏览器</p></div></div>
+        <div class="item"><img class="logo" src="https://bscscan.com/favicon.ico" alt="BscScan"><div class="meta"><a href="https://bscscan.com" target="_blank">BscScan</a><p>BSC 链区块浏览器</p></div></div>
+        <div class="item"><img class="logo" src="https://santiment.net/favicon.ico" alt="Santiment"><div class="meta"><a href="https://santiment.net" target="_blank">Santiment</a><p>社会化情绪与链上数据</p></div></div>
+        <div class="item"><img class="logo" src="https://www.theblock.co/favicon.ico" alt="The Block"><div class="meta"><a href="https://www.theblock.co" target="_blank">The Block Data</a><p>区块链行业数据与研究</p></div></div>
+        <div class="item"><img class="logo" src="https://polygonscan.com/favicon.ico" alt="PolygonScan"><div class="meta"><a href="https://polygonscan.com" target="_blank">PolygonScan</a><p>Polygon 链浏览器</p></div></div>
+        <div class="item"><img class="logo" src="https://tokenterminal.com/favicon.ico" alt="Token Terminal"><div class="meta"><a href="https://tokenterminal.com" target="_blank">Token Terminal</a><p>区块链项目财务分析</p></div></div>
+        <div class="item"><img class="logo" src="https://www.coinglass.com/favicon.ico" alt="Coinglass"><div class="meta"><a href="https://www.coinglass.com" target="_blank">Coinglass</a><p>合约仓位与资金流监测</p></div></div>
+        <div class="item"><img class="logo" src="https://www.artemis.xyz/favicon.ico" alt="Artemis"><div class="meta"><a href="https://www.artemis.xyz" target="_blank">Artemis</a><p>链上研究与工具集合</p></div></div>
+      </div>
+    </section>
+
+    <!-- DeFi 工具 -->
+    <section>
+      <h2>DeFi 工具</h2>
+      <div class="grid">
+        <div class="item"><img class="logo" src="https://www.geckoterminal.com/favicon.ico" alt="GeckoTerminal"><div class="meta"><a href="https://www.geckoterminal.com" target="_blank">GeckoTerminal</a><p>DEX 实时行情追踪</p></div></div>
+        <div class="item"><img class="logo" src="https://zapper.fi/favicon.ico" alt="Zapper"><div class="meta"><a href="https://zapper.fi" target="_blank">Zapper</a><p>DeFi 资产组合管理</p></div></div>
+        <div class="item"><img class="logo" src="https://l2beat.com/favicon.ico" alt="L2BEAT"><div class="meta"><a href="https://l2beat.com" target="_blank">L2BEAT</a><p>Layer2 项目分析</p></div></div>
+        <div class="item"><img class="logo" src="https://eigenphi.io/favicon.ico" alt="EigenPhi"><div class="meta"><a href="https://eigenphi.io" target="_blank">EigenPhi</a><p>MEV 与交易分析</p></div></div>
+        <div class="item"><img class="logo" src="https://defiyield.app/favicon.ico" alt="DeFiYield"><div class="meta"><a href="https://defiyield.app" target="_blank">DeFiYield</a><p>收益率与风险聚合</p></div></div>
+        <div class="item"><img class="logo" src="https://www.orbiter.finance/favicon.ico" alt="Orbiter"><div class="meta"><a href="https://www.orbiter.finance" target="_blank">Orbiter</a><p>跨链传输与桥接工具</p></div></div>
+        <div class="item"><img class="logo" src="https://www.anthias.xyz/favicon.ico" alt="Anthias"><div class="meta"><a href="https://www.anthias.xyz" target="_blank">Anthias</a><p>流动性与收益工具</p></div></div>
+        <div class="item"><img class="logo" src="https://dex.guru/favicon.ico" alt="DexGuru"><div class="meta"><a href="https://dex.guru" target="_blank">DexGuru</a><p>币对与交易分析工具</p></div></div>
+        <div class="item"><img class="logo" src="https://zerion.io/favicon.ico" alt="Zerion"><div class="meta"><a href="https://zerion.io" target="_blank">Zerion</a><p>投资组合管理界面</p></div></div>
+        <div class="item"><img class="logo" src="https://www.cpbox.io/favicon.ico" alt="Crypto Box"><div class="meta"><a href="https://www.cpbox.io" target="_blank">Crypto Box</a><p>DeFi 与链上工具集合</p></div></div>
+      </div>
+    </section>
+
+    <!-- NFT 工具 -->
+    <section>
+      <h2>NFT 工具</h2>
+      <div class="grid">
+        <div class="item"><img class="logo" src="https://nftgo.io/favicon.ico" alt="NFTGo"><div class="meta"><a href="https://nftgo.io" target="_blank">NFTGo</a><p>NFT 市场数据与分析</p></div></div>
+        <div class="item"><img class="logo" src="https://nftscan.com/favicon.ico" alt="NFTScan"><div class="meta"><a href="https://nftscan.com" target="_blank">NFTScan</a><p>链上 NFT 浏览器</p></div></div>
+        <div class="item"><img class="logo" src="https://mintify.xyz/favicon.ico" alt="Mintify"><div class="meta"><a href="https://mintify.xyz" target="_blank">Mintify</a><p>NFT 铸造与市场解决方案</p></div></div>
+        <div class="item"><img class="logo" src="https://www.cryptoslam.io/favicon.ico" alt="CryptoSlam"><div class="meta"><a href="https://www.cryptoslam.io" target="_blank">CryptoSlam</a><p>NFT 排行与交易历史</p></div></div>
+        <div class="item"><img class="logo" src="https://that.app/favicon.ico" alt="That.app"><div class="meta"><a href="https://that.app" target="_blank">That.app</a><p>NFT 社区与工具</p></div></div>
+        <div class="item"><img class="logo" src="https://nfteye.io/favicon.ico" alt="NFTEye"><div class="meta"><a href="https://nfteye.io" target="_blank">NFTEye</a><p>NFT 数据与分析平台</p></div></div>
+        <div class="item"><img class="logo" src="https://nfttrack.ai/favicon.ico" alt="NFTtrack"><div class="meta"><a href="https://nfttrack.ai" target="_blank">NFTtrack</a><p>NFT 跟踪与投资工具</p></div></div>
+      </div>
+    </section>
+
+    <!-- DAO 工具 -->
+    <section>
+      <h2>DAO 工具</h2>
+      <div class="grid">
+        <div class="item"><img class="logo" src="https://snapshot.org/favicon.ico" alt="Snapshot"><div class="meta"><a href="https://snapshot.org" target="_blank">Snapshot</a><p>无 gas 的去中心化投票平台</p></div></div>
+        <div class="item"><img class="logo" src="https://syndicate.io/favicon.ico" alt="Syndicate"><div class="meta"><a href="https://syndicate.io" target="_blank">Syndicate</a><p>去中心化投资与资管平台</p></div></div>
+        <div class="item"><img class="logo" src="https://www.tally.xyz/favicon.ico" alt="Tally"><div class="meta"><a href="https://www.tally.xyz" target="_blank">Tally</a><p>DAO 治理界面与工具</p></div></div>
+        <div class="item"><img class="logo" src="https://boardroom.io/favicon.ico" alt="Boardroom"><div class="meta"><a href="https://boardroom.io" target="_blank">Boardroom</a><p>治理信息与投票聚合</p></div></div>
+        <div class="item"><img class="logo" src="https://deepdao.io/favicon.ico" alt="DeepDAO"><div class="meta"><a href="https://deepdao.io" target="_blank">DeepDAO</a><p>DAO 数据与比较工具</p></div></div>
+        <div class="item"><img class="logo" src="https://www.daolens.com/favicon.ico" alt="DAOLens"><div class="meta"><a href="https://www.daolens.com" target="_blank">DAOLens</a><p>DAO 分析与资料库</p></div></div>
+        <div class="item"><img class="logo" src="https://upstream.app/favicon.ico" alt="Upstream"><div class="meta"><a href="https://upstream.app" target="_blank">Upstream</a><p>DAO 团队协作平台</p></div></div>
+        <div class="item"><img class="logo" src="https://kleoverse.com/favicon.ico" alt="Kleoverse"><div class="meta"><a href="https://kleoverse.com" target="_blank">Kleoverse</a><p>DAO 与社区工具集合</p></div></div>
+        <div class="item"><img class="logo" src="https://aragon.org/favicon.ico" alt="Aragon"><div class="meta"><a href="https://aragon.org" target="_blank">Aragon</a><p>去中心化组织建设工具</p></div></div>
+        <div class="item"><img class="logo" src="https://daohaus.club/favicon.ico" alt="DAOhaus"><div class="meta"><a href="https://daohaus.club" target="_blank">DAOhaus</a><p>模块化 DAO 创建与管理</p></div></div>
+        <div class="item"><img class="logo" src="https://kleros.io/favicon.ico" alt="Kleros"><div class="meta"><a href="https://kleros.io" target="_blank">Kleros</a><p>去中心化仲裁与争议解决</p></div></div>
+      </div>
+    </section>
+
+    <!-- 教育学习 -->
+    <section>
+      <h2>教育学习</h2>
+      <div class="grid">
+        <div class="item"><img class="logo" src="https://www.gemini.com/favicon.ico" alt="Cryptopedia"><div class="meta"><a href="https://www.gemini.com/cryptopedia" target="_blank">Cryptopedia (Gemini)</a><p>加密货币入门与知识库</p></div></div>
+        <div class="item"><img class="logo" src="https://iq.wiki/favicon.ico" alt="IQ.wiki"><div class="meta"><a href="https://iq.wiki" target="_blank">IQ.wiki</a><p>Web3 百科与教程</p></div></div>
+        <div class="item"><img class="logo" src="https://www.useweb3.xyz/favicon.ico" alt="useWeb3"><div class="meta"><a href="https://www.useweb3.xyz" target="_blank">useWeb3</a><p>实战与学习资源集合</p></div></div>
+        <div class="item"><img class="logo" src="https://academy.binance.com/favicon.ico" alt="Binance Academy"><div class="meta"><a href="https://academy.binance.com" target="_blank">Binance Academy</a><p>加密与区块链教育平台</p></div></div>
+        <div class="item"><img class="logo" src="https://buildspace.so/favicon.ico" alt="Buildspace"><div class="meta"><a href="https://buildspace.so" target="_blank">Buildspace</a><p>Web3 项目实战课程</p></div></div>
+        <div class="item"><img class="logo" src="https://www.web3.university/favicon.ico" alt="Web3 University"><div class="meta"><a href="https://www.web3.university" target="_blank">Web3 University</a><p>Web3 教育资源</p></div></div>
+        <div class="item"><img class="logo" src="https://odysseydao.com/favicon.ico" alt="Odyssey"><div class="meta"><a href="https://odysseydao.com" target="_blank">Odyssey</a><p>链上学习与任务平台</p></div></div>
+        <div class="item"><img class="logo" src="https://learnweb3.io/favicon.ico" alt="LearnWeb3"><div class="meta"><a href="https://learnweb3.io" target="_blank">LearnWeb3</a><p>开发者课程与教程</p></div></div>
+        <div class="item"><img class="logo" src="https://questbook.xyz/favicon.ico" alt="Questbook"><div class="meta"><a href="https://questbook.xyz" target="_blank">Questbook</a><p>学习任务与奖励平台</p></div></div>
+        <div class="item"><img class="logo" src="https://layer3.xyz/favicon.ico" alt="Layer3"><div class="meta"><a href="https://layer3.xyz" target="_blank">Layer3</a><p>学习与领取奖励的平台</p></div></div>
+        <div class="item"><img class="logo" src="https://rabbithole.gg/favicon.ico" alt="RabbitHole"><div class="meta"><a href="https://rabbithole.gg" target="_blank">RabbitHole</a><p>任务驱动的学习与奖励</p></div></div>
+      </div>
+    </section>
+
+    <!-- 安全服务 -->
+    <section>
+      <h2>安全服务</h2>
+      <div class="grid">
+        <div class="item"><img class="logo" src="https://revoke.cash/favicon.ico" alt="Revoke.cash"><div class="meta"><a href="https://revoke.cash" target="_blank">Revoke.cash</a><p>合约授权撤销与管理</p></div></div>
+        <div class="item"><img class="logo" src="https://gopluslabs.io/favicon.ico" alt="GoPlus"><div class="meta"><a href="https://gopluslabs.io" target="_blank">Go+ Security</a><p>合约安全检测与监控</p></div></div>
+        <div class="item"><img class="logo" src="https://forta.org/favicon.ico" alt="Forta"><div class="meta"><a href="https://forta.org" target="_blank">Forta Network</a><p>实时区块链安全监测</p></div></div>
+        <div class="item"><img class="logo" src="https://safe.global/favicon.ico" alt="Gnosis Safe"><div class="meta"><a href="https://safe.global" target="_blank">Gnosis Safe</a><p>多签钱包与资产管理</p></div></div>
+        <div class="item"><img class="logo" src="https://blowfish.xyz/favicon.ico" alt="Blowfish"><div class="meta"><a href="https://blowfish.xyz" target="_blank">Blowfish</a><p>去中心化安全工具</p></div></div>
+        <div class="item"><img class="logo" src="https://walletguard.app/favicon.ico" alt="Wallet Guard"><div class="meta"><a href="https://walletguard.app" target="_blank">Wallet Guard</a><p>钱包安全监控工具</p></div></div>
+        <div class="item"><img class="logo" src="https://scamsniffer.io/favicon.ico" alt="Scam Sniffer"><div class="meta"><a href="https://scamsniffer.io" target="_blank">Scam Sniffer</a><p>诈骗监测与警报服务</p></div></div>
+      </div>
+    </section>
+
+    <!-- 跨链桥 -->
+    <section>
+      <h2>跨链桥</h2>
+      <div class="grid">
+        <div class="item"><img class="logo" src="https://app.multichain.org/favicon.ico" alt="Multichain"><div class="meta"><a href="https://app.multichain.org" target="_blank">Multichain</a><p>主流跨链桥服务</p></div></div>
+        <div class="item"><img class="logo" src="https://across.to/favicon.ico" alt="Across"><div class="meta"><a href="https://across.to" target="_blank">Across Protocol</a><p>跨链传输协议</p></div></div>
+        <div class="item"><img class="logo" src="https://www.celer.network/favicon.ico" alt="Celer"><div class="meta"><a href="https://www.celer.network" target="_blank">Celer Network</a><p>跨链基础设施与桥</p></div></div>
+        <div class="item"><img class="logo" src="https://hop.exchange/favicon.ico" alt="Hop Protocol"><div class="meta"><a href="https://hop.exchange" target="_blank">Hop Protocol</a><p>跨链快速兑换协议</p></div></div>
+        <div class="item"><img class="logo" src="https://www.orbiter.finance/favicon.ico" alt="Orbiter"><div class="meta"><a href="https://www.orbiter.finance" target="_blank">Orbiter Finance</a><p>高效跨链传输服务</p></div></div>
+        <div class="item"><img class="logo" src="https://li.fi/favicon.ico" alt="LI.FI"><div class="meta"><a href="https://li.fi" target="_blank">LI.FI</a><p>跨链聚合与路由协议</p></div></div>
+        <div class="item"><img class="logo" src="https://debridge.finance/favicon.ico" alt="deBridge"><div class="meta"><a href="https://debridge.finance" target="_blank">deBridge</a><p>跨链信息与资产桥</p></div></div>
+        <div class="item"><img class="logo" src="https://chaineye.tools/favicon.ico" alt="ChainEye"><div class="meta"><a href="https://chaineye.tools" target="_blank">ChainEye</a><p>跨链与链上数据工具</p></div></div>
+      </div>
+    </section>
+
+    <!-- 其他 -->
+    <section>
+      <h2>其它</h2>
+      <div class="grid">
+        <div class="item"><img class="logo" src="https://twitterscan.com/favicon.ico" alt="TwitterScan"><div class="meta"><a href="https://twitterscan.com" target="_blank">TwitterScan</a><p>社交媒体链上分析工具</p></div></div>
+        <div class="item"><img class="logo" src="https://vestlab.io/favicon.ico" alt="VestLab"><div class="meta"><a href="https://vestlab.io" target="_blank">VestLab</a><p>Token 解锁与分发分析</p></div></div>
+        <div class="item"><img class="logo" src="https://token.unlocks.app/favicon.ico" alt="Token Unlocks"><div class="meta"><a href="https://token.unlocks.app" target="_blank">Token Unlocks</a><p>代币解锁日历与统计</p></div></div>
+        <div class="item"><img class="logo" src="https://cryptowat.ch/favicon.ico" alt="Cryptowatch"><div class="meta"><a href="https://cryptowat.ch" target="_blank">Cryptowatch</a><p>实时市场行情与图表</p></div></div>
+        <div class="item"><img class="logo" src="https://degame.com/favicon.ico" alt="DeGame"><div class="meta"><a href="https://degame.com" target="_blank">DeGame</a><p>区块链游戏资讯与数据</p></div></div>
+        <div class="item"><img class="logo" src="https://www.stakingrewards.com/favicon.ico" alt="Staking Rewards"><div class="meta"><a href="https://www.stakingrewards.com" target="_blank">Staking Rewards</a><p>质押收益与项目排名</p></div></div>
+        <div class="item"><img class="logo" src="https://disperse.app/favicon.ico" alt="Disperse"><div class="meta"><a href="https://disperse.app" target="_blank">Disperse</a><p>批量空投与转账工具</p></div></div>
+        <div class="item"><img class="logo" src="https://web3.career/favicon.ico" alt="Web3 Jobs"><div class="meta"><a href="https://web3.career" target="_blank">Web3 Jobs</a><p>Web3 职位与招聘平台</p></div></div>
+        <div class="item"><img class="logo" src="https://cryptocurrencyjobs.co/favicon.ico" alt="Crypto Jobs"><div class="meta"><a href="https://cryptocurrencyjobs.co" target="_blank">Cryptocurrency Jobs</a><p>区块链与加密招聘信息</p></div></div>
+        <div class="item"><img class="logo" src="https://cointool.app/favicon.ico" alt="CoinTool"><div class="meta"><a href="https://cointool.app" target="_blank">CoinTool</a><p>多功能链上工具集合</p></div></div>
+        <div class="item"><img class="logo" src="https://ultrasound.money/favicon.ico" alt="UltraSound Money"><div class="meta"><a href="https://ultrasound.money" target="_blank">Ultra Sound Money</a><p>比特币通胀与发行数据</p></div></div>
+        <div class="item"><img class="logo" src="https://whale-alert.io/favicon.ico" alt="Whale Alert"><div class="meta"><a href="https://whale-alert.io" target="_blank">Whale Alert</a><p>大额转账监测与通知</p></div></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    官方频道：<a href="https://t.me/BotLinkNetwork" target="_blank" style="color:var(--accent)">BotLink — Link Your Crypto Life.</a>
+  </footer>
+
+  <script>
+    // 主题切换（本地存储记忆）
+    const themeBtn = document.getElementById('themeBtn');
+    const root = document.documentElement;
+    const body = document.body;
+
+    function applyTheme(theme){
+      if(theme === 'dark'){
+        body.classList.add('dark');
+        themeBtn.textContent = '☀️';
+      } else {
+        body.classList.remove('dark');
+        themeBtn.textContent = '🌙';
+      }
+    }
+
+    // 初始化
+    const saved = localStorage.getItem('ct_theme');
+    applyTheme(saved === 'dark' ? 'dark' : 'light');
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = body.classList.contains('dark');
+      const newTheme = isDark ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('ct_theme', newTheme);
+    });
+
+    // 对于部分站点 favicon 404 时用默认占位图（优雅退化）
+    document.querySelectorAll('.logo').forEach(img=>{
+      img.onerror = function(){ this.src = 'data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\"><rect width=\"100%\" height=\"100%\" fill=\"%23f3f4f6\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"%23888\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"10\">ICON</text></svg>'; };
+    });
+  </script>
+</body>
+</html>
