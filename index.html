@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,6 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', sans-serif; background: #0a0f1a; color: #fff; overflow-x: hidden; }
 
-    /* === Header === */
     header {
       position: fixed;
       top: 0; left: 0;
@@ -34,7 +33,19 @@
     }
     header nav a:hover { color: #00aaff; }
 
-    /* === Hero === */
+    #langToggle {
+      margin-left: 24px;
+      background: transparent;
+      border: 1px solid #00aaff;
+      color: #00aaff;
+      border-radius: 20px;
+      padding: 6px 14px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+    #langToggle:hover { background: #00aaff; color: #fff; }
+
     .hero {
       position: relative;
       display: flex;
@@ -47,12 +58,9 @@
       background: radial-gradient(ellipse at bottom, #0a0f1a 0%, #000 100%);
       overflow: hidden;
     }
-
-    /* 动态网格背景 */
     .hero::before {
       content: '';
-      position: absolute;
-      top: 0; left: 0;
+      position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
       background-image:
         linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
@@ -66,11 +74,9 @@
       to { background-position: 80px 80px, 80px 80px; }
     }
 
-    /* 英文流光层 */
     .hero::after {
       content: '';
-      position: absolute;
-      top: 0; left: 0;
+      position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
       background: linear-gradient(120deg, transparent, rgba(0,170,255,0.15), transparent);
       animation: lightFlow 6s linear infinite;
@@ -101,25 +107,11 @@
       box-shadow: 0 0 25px rgba(0,170,255,0.5);
     }
 
-    /* === Section === */
-    section {
-      padding: 100px 10%;
-      text-align: center;
-    }
-    section h3 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #00aaff;
-    }
+    section { padding: 100px 10%; text-align: center; }
+    section h3 { font-size: 1.8rem; margin-bottom: 20px; color: #00aaff; }
     section p { max-width: 800px; margin: 0 auto 50px; color: #b7c3d2; }
 
-    /* === Features === */
-    .features {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
+    .features { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; }
     .feature {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
@@ -128,19 +120,10 @@
       width: 300px;
       transition: 0.3s;
     }
-    .feature:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 15px rgba(0,170,255,0.2);
-    }
+    .feature:hover { transform: translateY(-6px); box-shadow: 0 0 15px rgba(0,170,255,0.2); }
     .feature h4 { color: #00aaff; margin-bottom: 10px; font-size: 1.2rem; }
 
-    /* === Roadmap === */
-    .roadmap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 25px;
-    }
+    .roadmap { display: flex; flex-direction: column; align-items: center; gap: 25px; }
     .step {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
@@ -152,7 +135,6 @@
     }
     .step h5 { color: #00aaff; margin-bottom: 8px; }
 
-    /* === Community === */
     .community a {
       display: inline-block;
       margin: 10px;
@@ -165,7 +147,6 @@
     }
     .community a:hover { background: #0091e6; }
 
-    /* === Footer === */
     footer {
       background: rgba(255,255,255,0.05);
       text-align: center;
@@ -176,7 +157,7 @@
 
     @media(max-width:700px){
       header { padding: 12px 6%; }
-      header nav a { margin-left: 12px; }
+      header nav a, #langToggle { margin-left: 12px; }
       .hero h2 { font-size: 1.6rem; }
       .hero p { font-size: 0.95rem; }
       section { padding: 60px 6%; }
@@ -189,75 +170,127 @@
   <header>
     <h1>BotLink</h1>
     <nav>
-      <a href="#features">功能</a>
-      <a href="#token">Token</a>
-      <a href="#roadmap">路线图</a>
-      <a href="#community">社区</a>
+      <a data-en="Features" data-zh="功能" href="#features">Features</a>
+      <a data-en="Token" data-zh="Token" href="#token">Token</a>
+      <a data-en="Roadmap" data-zh="路线图" href="#roadmap">Roadmap</a>
+      <a data-en="Community" data-zh="社区" href="#community">Community</a>
+      <button id="langToggle">中文</button>
     </nav>
   </header>
 
   <section class="hero">
     <div class="hero-content">
-      <h2>连接加密世界的多功能<br>Telegram Bot</h2>
-      <p>BotLink 让区块链的复杂功能变得简单。无论你是交易者、开发者还是普通用户，都能轻松管理资产、兑换代币并参与生态。</p>
-      <a href="https://t.me/BotLinkNetwork_bot" class="cta">立即体验 BotLink</a>
+      <h2 data-en="The All-in-One Telegram Bot<br>Connecting the Crypto World"
+          data-zh="连接加密世界的多功能<br>Telegram Bot">
+        The All-in-One Telegram Bot<br>Connecting the Crypto World
+      </h2>
+      <p data-en="BotLink simplifies the complex world of blockchain. Whether you're a trader, developer, or everyday user, you can easily manage assets, swap tokens, and engage with the ecosystem."
+         data-zh="BotLink 让区块链的复杂功能变得简单。无论你是交易者、开发者还是普通用户，都能轻松管理资产、兑换代币并参与生态。">
+        BotLink simplifies the complex world of blockchain. Whether you're a trader, developer, or everyday user, you can easily manage assets, swap tokens, and engage with the ecosystem.
+      </p>
+      <a href="https://t.me/BotLinkNetwork_bot" class="cta"
+         data-en="Try BotLink Now" data-zh="立即体验 BotLink">Try BotLink Now</a>
     </div>
   </section>
 
   <section id="features">
-    <h3>核心功能</h3>
+    <h3 data-en="Core Features" data-zh="核心功能">Core Features</h3>
     <div class="features">
       <div class="feature">
-        <h4>实时查询 USDT 法币 汇率</h4>
-        <p>获取最新的法币场外价格数据，支持多交易所比价。</p>
+        <h4 data-en="Real-Time USDT Fiat Rates" data-zh="实时查询 USDT 法币 汇率">Real-Time USDT Fiat Rates</h4>
+        <p data-en="Access the latest OTC prices from multiple exchanges in one place."
+           data-zh="获取最新的法币场外价格数据，支持多交易所比价。">
+          Access the latest OTC prices from multiple exchanges in one place.
+        </p>
       </div>
       <div class="feature">
-        <h4>一键兑换 TRX</h4>
-        <p>快速完成 TRX 与 USDT 的兑换，安全高效。</p>
+        <h4 data-en="One-Click TRX Swap" data-zh="一键兑换 TRX">One-Click TRX Swap</h4>
+        <p data-en="Instantly swap between TRX and USDT securely and efficiently."
+           data-zh="快速完成 TRX 与 USDT 的兑换，安全高效。">
+          Instantly swap between TRX and USDT securely and efficiently.
+        </p>
       </div>
       <div class="feature">
-        <h4>购买 TRX 能量</h4>
-        <p>节省链上手续费，优化你的交易体验。</p>
+        <h4 data-en="Buy TRX Energy" data-zh="购买 TRX 能量">Buy TRX Energy</h4>
+        <p data-en="Save on network fees and optimize your on-chain transactions."
+           data-zh="节省链上手续费，优化你的交易体验。">
+          Save on network fees and optimize your on-chain transactions.
+        </p>
       </div>
       <div class="feature">
-        <h4>开通 Telegram Premium</h4>
-        <p>直接在 Bot 中完成购买，支持多种支付方式。</p>
+        <h4 data-en="Activate Telegram Premium" data-zh="开通 Telegram Premium">Activate Telegram Premium</h4>
+        <p data-en="Purchase Premium directly within the bot using multiple payment options."
+           data-zh="直接在 Bot 中完成购买，支持多种支付方式。">
+          Purchase Premium directly within the bot using multiple payment options.
+        </p>
       </div>
     </div>
   </section>
 
   <section id="token">
-    <h3>$BotLink Token</h3>
-    <p>$BotLink 是整个生态的核心通证，用于解锁高级功能、享受空投与激励，并将在未来参与治理与收益分配。</p>
+    <h3 data-en="$BotLink Token" data-zh="$BotLink Token">$BotLink Token</h3>
+    <p data-en="$BotLink is the core utility token of the ecosystem — unlocking advanced features, rewards, and future governance participation."
+       data-zh="$BotLink 是整个生态的核心通证，用于解锁高级功能、享受空投与激励，并将在未来参与治理与收益分配。">
+      $BotLink is the core utility token of the ecosystem — unlocking advanced features, rewards, and future governance participation.
+    </p>
   </section>
 
   <section id="roadmap">
-    <h3>项目路线图</h3>
+    <h3 data-en="Project Roadmap" data-zh="项目路线图">Project Roadmap</h3>
     <div class="roadmap">
       <div class="step">
-        <h5>阶段 1</h5>
-        <p>发布核心功能（汇率、兑换、能量）并上线 Telegram。</p>
+        <h5 data-en="Phase 1" data-zh="阶段 1">Phase 1</h5>
+        <p data-en="Launch core features (Rate, Swap, Energy) and integrate with Telegram."
+           data-zh="发布核心功能（汇率、兑换、能量）并上线 Telegram。">
+          Launch core features (Rate, Swap, Energy) and integrate with Telegram.
+        </p>
       </div>
       <div class="step">
-        <h5>阶段 2</h5>
-        <p>推出 $BotLink Token，开放生态激励与推广体系。</p>
+        <h5 data-en="Phase 2" data-zh="阶段 2">Phase 2</h5>
+        <p data-en="Release $BotLink Token and launch incentive & referral programs."
+           data-zh="推出 $BotLink Token，开放生态激励与推广体系。">
+          Release $BotLink Token and launch incentive & referral programs.
+        </p>
       </div>
       <div class="step">
-        <h5>阶段 3</h5>
-        <p>上线 Web 自动化工具，打造一体化加密生态入口。</p>
+        <h5 data-en="Phase 3" data-zh="阶段 3">Phase 3</h5>
+        <p data-en="Launch web-based automation tools to create a unified crypto gateway."
+           data-zh="上线 Web 自动化工具，打造一体化加密生态入口。">
+          Launch web-based automation tools to create a unified crypto gateway.
+        </p>
       </div>
     </div>
   </section>
 
   <section id="community" class="community">
-    <h3>加入社区</h3>
-    <p>与 500000+ 位活跃用户一起，探索加密世界的无限可能。</p>
-    <a href="https://t.me/BotLinkNetwork">Telegram 频道</a>
-    <a href="https://t.me/BotLink_Pro">Telegram 群组</a>
+    <h3 data-en="Join the Community" data-zh="加入社区">Join the Community</h3>
+    <p data-en="Join over 500,000 active users and explore endless opportunities in the crypto world."
+       data-zh="与 500000+ 位活跃用户一起，探索加密世界的无限可能。">
+      Join over 500,000 active users and explore endless opportunities in the crypto world.
+    </p>
+    <a href="https://t.me/BotLinkNetwork" data-en="Telegram Channel" data-zh="Telegram 频道">Telegram Channel</a>
+    <a href="https://t.me/BotLink_Pro" data-en="Telegram Group" data-zh="Telegram 群组">Telegram Group</a>
   </section>
 
   <footer>
-    <p>© 2025 BotLink | <a href="https://botlink.network/book.pdf" style="color:#00aaff;text-decoration:none;">查看白皮书</a></p>
+    <p>
+      © 2025 BotLink | 
+      <a href="https://botlink.network/book.pdf" style="color:#00aaff;text-decoration:none;"
+         data-en="View Whitepaper" data-zh="查看白皮书">View Whitepaper</a>
+    </p>
   </footer>
+
+  <script>
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = 'en';
+
+    langToggle.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'zh' : 'en';
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.innerHTML = el.getAttribute(`data-${currentLang}`);
+      });
+      langToggle.textContent = currentLang === 'en' ? '中文' : 'English';
+    });
+  </script>
 </body>
 </html>
